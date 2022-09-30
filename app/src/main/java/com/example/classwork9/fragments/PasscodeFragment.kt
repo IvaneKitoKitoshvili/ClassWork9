@@ -1,6 +1,5 @@
 package com.example.classwork9.fragments
 
-import android.util.Log
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
