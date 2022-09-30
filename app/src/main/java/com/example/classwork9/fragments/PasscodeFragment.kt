@@ -1,29 +1,25 @@
 package com.example.classwork9.fragments
 
-import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.classwork9.BaseFragment
 import com.example.classwork9.adapter.DotsAdapter
 import com.example.classwork9.adapter.PasscodeAdapter
-import com.example.classwork9.databinding.ActivityMainBinding.inflate
 import com.example.classwork9.databinding.FragmentPasscodeBinding
+import com.example.classwork9.models.Dots
+import com.example.classwork9.models.Passcode
 
 class PasscodeFragment : BaseFragment<FragmentPasscodeBinding>(FragmentPasscodeBinding::inflate) {
 
     private val dotsAdapter: DotsAdapter by lazy { DotsAdapter() }
     private val passcodeAdapter: PasscodeAdapter by lazy { PasscodeAdapter() }
 
-    private val itemsList = mutableListOf<Password>()
+    private val itemsList = mutableListOf<Passcode>()
     private val inputList = mutableListOf<String>()
     private val dots = mutableListOf<Dots>()
-    private val ourPass = "5203"
+    private val myPasscode = "0934"
 
 
     override fun viewCreated() {
@@ -40,14 +36,13 @@ class PasscodeFragment : BaseFragment<FragmentPasscodeBinding>(FragmentPasscodeB
     }
 
     private fun inputNumber() {
-        myAdapter.apply {
+        passcodeAdapter.apply {
             setOnItemClickListener { num, _ ->
 
                 val filteredNum = num.toString().filter { it.isDigit() }
                 inputList.add(filteredNum)
 
                 for (index in dots.indices){
-                    Log.d("misho","${index.toString()} indexi")
                     if(!dots[index].isChecked){
                         dots[index] = Dots(true)
                         dotsAdapter.submitList(dots.toList())
@@ -55,13 +50,10 @@ class PasscodeFragment : BaseFragment<FragmentPasscodeBinding>(FragmentPasscodeB
                     }
                 }
 
-                Log.d("misho", inputList.toString()) // amas su wers
-
                 if (inputList.size == 4) {
                     val listAsString =
                         "${inputList[0]}${inputList[1]}${inputList[2]}${inputList[3]}"
-                    Log.d("misho", "$listAsString aq unda shewydes")
-                    if (listAsString == ourPass) {
+                    if (listAsString == myPasscode) {
                         Toast.makeText(requireContext(), "parolebi emtxveva!", Toast.LENGTH_SHORT)
                             .show()
                     }
@@ -73,13 +65,13 @@ class PasscodeFragment : BaseFragment<FragmentPasscodeBinding>(FragmentPasscodeB
 
     private fun setupRecycler() {
         binding.rvMyrv.apply {
-            adapter = myAdapter
+            adapter = passcodeAdapter
             layoutManager =
                 GridLayoutManager(
                     requireContext(), 3, GridLayoutManager.VERTICAL, false
                 )
         }
-        myAdapter.submitList(itemsList)
+        passcodeAdapter.submitList(itemsList)
     }
 
     private fun setupDotsRecycler() {
@@ -120,52 +112,52 @@ class PasscodeFragment : BaseFragment<FragmentPasscodeBinding>(FragmentPasscodeB
 
     private fun populateList() {
         itemsList.add(
-            Password(
+            Passcode(
                 "1",
             )
         )
         itemsList.add(
-            Password(
+            Passcode(
                 "2",
             )
         )
         itemsList.add(
-            Password(
+            Passcode(
                 "3",
             )
         )
         itemsList.add(
-            Password(
+            Passcode(
                 "4",
             )
         )
         itemsList.add(
-            Password(
+            Passcode(
                 "5",
             )
         )
         itemsList.add(
-            Password(
+            Passcode(
                 "6",
             )
         )
         itemsList.add(
-            Password(
+            Passcode(
                 "7",
             )
         )
         itemsList.add(
-            Password(
+            Passcode(
                 "8",
             )
         )
         itemsList.add(
-            Password(
+            Passcode(
                 "9",
             )
         )
         itemsList.add(
-            Password(
+            Passcode(
                 "0",
             )
         )
