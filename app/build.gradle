@@ -10,7 +10,7 @@ plugins {
 
 android {
     namespace 'com.example.classwork9'
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.example.classwork9"
